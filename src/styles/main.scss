@@ -1,0 +1,14 @@
+// global
+@use "./global.scss";
+// Component
+@use "./footer.scss";
+@use "./navbar.scss";
+@use "./product-card.scss";
+@use "./add-to-cart.scss";
+// pages
+@use "./pages/about.scss";
+@use "./pages/cart.scss";
+@use "./pages/contact.scss";
+@use "./pages/home.scss";
+@use "./pages/product.scss";
+@use "./pages/products.scss";
