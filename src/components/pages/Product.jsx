@@ -2,6 +2,7 @@
 import { useState, useEffect } from "react";
 import { useParams, useHistory } from "react-router-dom";
 import AddToCart from "../AddToCart";
+import CartProvider from "../CartProvider";
 
 export default function Product() {
   const [product, setProduct] = useState({});
@@ -49,7 +50,7 @@ export default function Product() {
         <div className="product-information">
           <h3>{product.title}</h3> <br />
           <h5>${product.price}</h5> <br /> {product.description} <br />
-          <AddToCart />
+          <AddToCart key={product.id} product={product} />
         </div>
       </div>
     </div>

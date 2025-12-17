@@ -1,8 +1,13 @@
-import React from "react";
-import { useState } from "react";
+// When you click add to cart, it needs to call add to cart from the context
+// this function will take in an ID and the count from this page. ID might need to be passed through props
 
-export default function AddToCart() {
+import { useState } from "react";
+import { useCart } from "./CartProvider";
+
+export default function AddToCart({ product }) {
   const [count, setCount] = useState(1);
+
+  const { handleAddToCart } = useCart();
 
   function plusCount(e) {
     e.stopPropagation();
@@ -27,7 +32,15 @@ export default function AddToCart() {
         -
       </button>
       <br />
-      <button className="add-to-cart">Add to cart</button>
+      <button
+        className="add-to-cart"
+        onClick={(e) => {
+          handleAddToCart(e, product, count);
+          setCount(1);
+        }}
+      >
+        Add to cart
+      </button>
     </div>
   );
 }

@@ -10,7 +10,7 @@ export default function ProductCard({ product }) {
     >
       <img src={product.image} alt="" />
       <h4>{product.title}</h4> <p>${product.price}</p>
-      <AddToCart />
+      <AddToCart product={product} />
     </div>
   );
 }
