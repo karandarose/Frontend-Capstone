@@ -24,13 +24,15 @@ export default function AddToCart({ product }) {
   };
   return (
     <div>
-      <button className="plus" onClick={plusCount}>
-        +
-      </button>
-      <input type="number" onClick={addToButtons} value={count} />
-      <button className="minus" onClick={minusCount}>
-        -
-      </button>
+      <div className="number-buttons">
+        <button className="plus" onClick={plusCount}>
+          +
+        </button>
+        <h3>{count}</h3>
+        <button className="minus" onClick={minusCount}>
+          -
+        </button>
+      </div>
       <br />
       <button
         className="add-to-cart"

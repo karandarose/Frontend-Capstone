@@ -1,15 +1,17 @@
-.add {
-  justify-content: center;
+.number-buttons {
+  display: flex;
+  align-items: center;
+  gap: 5px;
 }
 
-input {
-  width: 27px;
-  justify-content: center;
-  align-items: center;
+.plus {
+  height: 20px;
 }
+
 .minus {
-  justify-content: center;
+  height: 20px;
 }
+
 .add-to-cart {
   margin-top: 5px;
 }
