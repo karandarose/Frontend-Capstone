@@ -4,10 +4,11 @@
 import { useState } from "react";
 import { useCart } from "./CartProvider";
 
-export default function AddToCart({ product }) {
+export default function AddToCart({ product, isCart = "" }) {
   const [count, setCount] = useState(1);
 
-  const { handleAddToCart } = useCart();
+  const { handleAddToCart, inCart } = useCart();
+  const quantity = inCart(product.id);
 
   function plusCount(e) {
     e.stopPropagation();
@@ -18,7 +19,7 @@ export default function AddToCart({ product }) {
     e.stopPropagation();
     setCount((prevCount) => prevCount - 1);
   }
-
+  console.log(quantity);
   const addToButtons = (e) => {
     e.stopPropagation();
   };
@@ -28,7 +29,7 @@ export default function AddToCart({ product }) {
         <button className="plus" onClick={plusCount}>
           +
         </button>
-        <h3>{count}</h3>
+        <h3>{isCart ? quantity[0].quantity : count}</h3>
         <button className="minus" onClick={minusCount}>
           -
         </button>

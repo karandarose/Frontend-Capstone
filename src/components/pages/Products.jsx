@@ -8,6 +8,9 @@ export default function Products() {
   const [products, setProducts] = useState([]);
   const [loading, setLoading] = useState(true);
   const [filteredProducts, setFilteredProducts] = useState([]);
+  const [currentFilter, setCurrentFilter] = useState("");
+  const [currentSort, setCurrentSort] = useState("");
+  const [sortOrder, setSortOrder] = useState("asc");
 
   const { productsId } = useParams();
   const { push } = useHistory();
@@ -30,15 +33,50 @@ export default function Products() {
   }, []);
 
   function handleFilter(category) {
-    const filteredProducts = products.filter(
+    setCurrentFilter(category);
+    let filteredProducts = products.filter(
       (product) => product.category === category
     );
+    if (currentSort) {
+      filteredProducts = applySorting(filteredProducts, currentSort, sortOrder);
+    }
     setFilteredProducts(filteredProducts);
+
     console.log(filteredProducts);
   }
-  function sortFilter(property) {
-    const sortedProducts = products.sort((a, b) => a[property] - b[property]);
-    setFilteredProducts(sortedProducts);
+  function applySorting(productArray, property, order) {
+    // const baseList =
+    //   filteredProducts.length === 0 ? products : filteredProducts;
+    // console.log(baseList);
+    return productArray.sort((a, b) => {
+      if (order === "asc") {
+        return a[property] > b[property] ? 1 : -1;
+      } else {
+        return a[property] < b[property] ? 1 : -1;
+      }
+    });
+    // setFilteredProducts(sortedProducts);
+  }
+  function handleSort(property) {
+    setCurrentSort(property);
+    const baseList =
+      currentFilter === ""
+        ? products
+        : products.filter((product) => product.category === currentFilter);
+    const sorted = applySorting(baseList, property, sortOrder);
+    console.log(sorted);
+    setFilteredProducts(sorted);
+  }
+  function handleOrder() {
+    const newOrder = sortOrder === "asc" ? "desc" : "asc";
+    setSortOrder(newOrder);
+    const baseList =
+      currentFilter === ""
+        ? products
+        : products.filter((product) => product.category === currentFilter);
+    const sorted = applySorting(baseList, currentSort, newOrder);
+    console.log(sorted);
+    setFilteredProducts(sorted);
   }
   return (
     <div>
@@ -59,12 +97,16 @@ export default function Products() {
       <select
         name="sort"
         id="sort"
-        onChange={(e) => sortFilter(e.target.value)}
+        onChange={(e) => handleSort(e.target.value)}
       >
         <option value="id">ID</option>
         <option value="title">Title</option>
         <option value="price">Price</option>
       </select>
+      <label htmlFor="order">Order: </label>
+      <button onClick={() => handleOrder()}>
+        Order: {sortOrder === "asc" ? "ascending" : "desending"}
+      </button>
       {filteredProducts.length === 0 ? (
         <div className="products-wrapper">
           {products.map((product) => (

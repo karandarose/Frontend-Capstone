@@ -21,8 +21,24 @@ function CartProvider({ children }) {
             : item
         );
       }
+
       return [...prevItems, { ...product, quantity: count }];
     });
+  };
+
+  const updateCartItemQuantity = (id, newQuantity) => {
+    setCartItems((prevItems) =>
+      prevItems.map((item) =>
+        item.id === id
+          ? { ...item, quantity: item.quantity + Number(newQuantity) }
+          : item
+      )
+    );
+  };
+  const inCart = (id) => {
+    if (cartItems) {
+      return cartItems.filter((item) => item.id === id);
+    }
   };
 
   useEffect(() => {
@@ -30,9 +46,18 @@ function CartProvider({ children }) {
   }, [cartItems]);
 
   return (
-    <CartContext.Provider value={{ cartItems, setCartItems, handleAddToCart }}>
+    <CartContext.Provider
+      value={{
+        cartItems,
+        setCartItems,
+        handleAddToCart,
+        updateCartItemQuantity,
+        inCart,
+      }}
+    >
       {children}
     </CartContext.Provider>
   );
 }
+
 export default CartProvider;
