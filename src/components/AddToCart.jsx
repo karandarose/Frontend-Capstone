@@ -53,6 +53,7 @@ export default function AddToCart({ product, isCart = "" }) {
           onClick={(e) => {
             handleAddToCart(e, product, count);
             setCount(1);
+            alert(`${product.title} added to cart!`);
           }}
         >
           Add to cart

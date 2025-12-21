@@ -6,6 +6,11 @@ body {
   // background-color: gray;
 }
 
+#root {
+  display: flex;
+  flex-direction: column;
+}
+
 .products-wrapper {
   display: flex;
   flex-wrap: wrap;

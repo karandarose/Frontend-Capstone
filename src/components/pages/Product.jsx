@@ -2,6 +2,7 @@
 import { useState, useEffect } from "react";
 import { useParams, useHistory } from "react-router-dom";
 import AddToCart from "../AddToCart";
+import Footer from "../Footer";
 
 export default function Product() {
   const [product, setProduct] = useState({});
@@ -39,6 +40,7 @@ export default function Product() {
           <AddToCart key={product.id} product={product} />
         </div>
       </div>
+      <Footer />
     </div>
   );
 }

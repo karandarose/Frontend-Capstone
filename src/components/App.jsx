@@ -6,6 +6,9 @@ import Cart from "./pages/Cart";
 import Contact from "./pages/Contact";
 import Product from "./pages/Product";
 import Products from "./pages/Products";
+import icons from "../assets/icons";
+
+icons();
 
 function App() {
   return (

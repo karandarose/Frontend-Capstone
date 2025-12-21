@@ -1,8 +1,31 @@
-.video-container {
-  width: 105%;
-  height: 80%;
+.title {
+  width: 100%;
   align-items: center;
-  position: relative;
-  padding-right: 0;
+  justify-content: center;
+  flex-wrap: wrap;
+  // position: absolute;
+
+  h1 {
+    position: absolute;
+    top: 45%;
+    z-index: 10;
+  }
+}
+
+.snow-video {
+  // width: 100%;
+  // // object-fit: contain;
+  // position: fixed;
+  // right: 0;
+  // top: 0;
+  // min-width: 100%;
+  // max-width: 100%;
+  position: fixed;
+  z-index: 0;
+  overflow: hidden;
   margin: 0;
+  width: 200%;
+  right: 0;
+  // left: 0;
+  height: 100%;
 }

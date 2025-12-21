@@ -2,6 +2,7 @@ import { useState, useEffect } from "react";
 
 import ProductCard from "../ProductCard";
 import snow from "../../assets/snow.mp4";
+import Footer from "../Footer";
 
 export default function Products() {
   const [products, setProducts] = useState([]);
@@ -69,13 +70,13 @@ export default function Products() {
   }
   return (
     <div>
-      <div className="video-container">
+      <div className="video-container-products">
         <video
           autoPlay
           loop
           muted
           id="snow.mp4"
-          style={{ width: "100%", height: "100%" }}
+          style={{ width: "300%", height: "200%" }}
         >
           <source src={snow} type="video/mp4" />
         </video>
@@ -120,6 +121,7 @@ export default function Products() {
           ))}
         </div>
       )}
+      <Footer />
     </div>
   );
 }
