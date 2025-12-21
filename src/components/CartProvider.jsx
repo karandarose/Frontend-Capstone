@@ -8,7 +8,9 @@ const CartContext = createContext();
 export const useCart = () => useContext(CartContext);
 
 function CartProvider({ children }) {
-  const [cartItems, setCartItems] = useState([]);
+  const sessionCart = JSON.parse(sessionStorage.getItem("cartItems"));
+
+  const [cartItems, setCartItems] = useState(sessionCart || []);
 
   const handleAddToCart = (e, product, count) => {
     e.stopPropagation();
@@ -41,8 +43,41 @@ function CartProvider({ children }) {
     }
   };
 
+  const removeItem = (event, id) => {
+    event.stopPropagation();
+    setCartItems((prev) => prev.filter((item) => item.id !== id));
+  };
+
+  const changeQuantity = (e, quantity, id) => {
+    e.stopPropagation();
+    setCartItems((prevItems) => {
+      const prev = prevItems.find((item) => item.id === id);
+      if (prev) {
+        return prevItems.map((item) => {
+          if (item.id === id) {
+            return {
+              ...item,
+              quantity: item.quantity + quantity,
+            };
+          } else return item;
+        });
+      }
+      return prevItems;
+    });
+  };
+
+  const cartPrice = () => {
+    let total = 0;
+    cartItems.forEach((item) => {
+      total += item.price * item.quantity;
+    });
+
+    return total;
+  };
+  cartPrice();
+
   useEffect(() => {
-    console.log(cartItems);
+    sessionStorage.setItem("cartItems", JSON.stringify(cartItems));
   }, [cartItems]);
 
   return (
@@ -53,6 +88,9 @@ function CartProvider({ children }) {
         handleAddToCart,
         updateCartItemQuantity,
         inCart,
+        removeItem,
+        changeQuantity,
+        cartPrice,
       }}
     >
       {children}

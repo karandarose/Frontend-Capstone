@@ -1,8 +1,7 @@
-// fetch all products on this page
-import { use } from "react";
 import { useState, useEffect } from "react";
-import { useParams, useHistory } from "react-router-dom";
+
 import ProductCard from "../ProductCard";
+import snow from "../../assets/snow.mp4";
 
 export default function Products() {
   const [products, setProducts] = useState([]);
@@ -12,9 +11,6 @@ export default function Products() {
   const [currentSort, setCurrentSort] = useState("");
   const [sortOrder, setSortOrder] = useState("asc");
 
-  const { productsId } = useParams();
-  const { push } = useHistory();
-
   useEffect(() => {
     const fetchProducts = async () => {
       setLoading(true);
@@ -22,7 +18,6 @@ export default function Products() {
         const response = await fetch("https://fakestoreapi.com/products");
         const data = await response.json();
         setProducts(data);
-        console.log(data);
       } catch (error) {
         console.error("Error fetching products", error);
       } finally {
@@ -41,13 +36,8 @@ export default function Products() {
       filteredProducts = applySorting(filteredProducts, currentSort, sortOrder);
     }
     setFilteredProducts(filteredProducts);
-
-    console.log(filteredProducts);
   }
   function applySorting(productArray, property, order) {
-    // const baseList =
-    //   filteredProducts.length === 0 ? products : filteredProducts;
-    // console.log(baseList);
     return productArray.sort((a, b) => {
       if (order === "asc") {
         return a[property] > b[property] ? 1 : -1;
@@ -55,7 +45,6 @@ export default function Products() {
         return a[property] < b[property] ? 1 : -1;
       }
     });
-    // setFilteredProducts(sortedProducts);
   }
   function handleSort(property) {
     setCurrentSort(property);
@@ -64,7 +53,7 @@ export default function Products() {
         ? products
         : products.filter((product) => product.category === currentFilter);
     const sorted = applySorting(baseList, property, sortOrder);
-    console.log(sorted);
+
     setFilteredProducts(sorted);
   }
   function handleOrder() {
@@ -75,11 +64,22 @@ export default function Products() {
         ? products
         : products.filter((product) => product.category === currentFilter);
     const sorted = applySorting(baseList, currentSort, newOrder);
-    console.log(sorted);
+
     setFilteredProducts(sorted);
   }
   return (
     <div>
+      <div className="video-container">
+        <video
+          autoPlay
+          loop
+          muted
+          id="snow.mp4"
+          style={{ width: "100%", height: "100%" }}
+        >
+          <source src={snow} type="video/mp4" />
+        </video>
+      </div>
       <h1>Products</h1>
       <label htmlFor="filter">Filter: </label>
       <select

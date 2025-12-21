@@ -2,7 +2,6 @@
 import { useState, useEffect } from "react";
 import { useParams, useHistory } from "react-router-dom";
 import AddToCart from "../AddToCart";
-import CartProvider from "../CartProvider";
 
 export default function Product() {
   const [product, setProduct] = useState({});
@@ -20,7 +19,6 @@ export default function Product() {
         );
         const data = await response.json();
         setProduct(data);
-        console.log(data);
       } catch (error) {
         console.error("Error fetching product".error);
       } finally {
@@ -28,19 +26,7 @@ export default function Product() {
       }
     };
     fetchProduct();
-    console.log(Product);
   }, []);
-
-  // const productDetails = [];
-  // for (let i = 1; i <= 10; i++)
-  //   if (product[`strProduct${i}`]) {
-  //     productDetails.push({
-  //       id: product[`strProduct${i}`],
-  //       title: product[`strProduct${i}`],
-  //       price: product[`strProduct${i}`],
-  //       description: product[`strProduct${i}`],
-  //       category: product[`strProduct${i}`],
-  //     });
 
   return (
     <div>

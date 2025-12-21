@@ -1,4 +1,16 @@
+html,
+body {
+  background-color: grey;
+  z-index: 0;
+}
+
 h1 {
   align-items: center;
   justify-content: center;
+}
+
+.video-container {
+  position: fixed;
+  z-index: 0;
+  overflow: hidden;
 }

@@ -11,6 +11,7 @@
   transition: all 0.3s;
   padding: 25px;
   background-color: silver;
+  z-index: 1;
 
   &:hover {
     transform: scale(0.98);

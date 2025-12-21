@@ -7,7 +7,7 @@ import { useCart } from "./CartProvider";
 export default function AddToCart({ product, isCart = "" }) {
   const [count, setCount] = useState(1);
 
-  const { handleAddToCart, inCart } = useCart();
+  const { handleAddToCart, inCart, removeItem, changeQuantity } = useCart();
   const quantity = inCart(product.id);
 
   function plusCount(e) {
@@ -19,31 +19,45 @@ export default function AddToCart({ product, isCart = "" }) {
     e.stopPropagation();
     setCount((prevCount) => prevCount - 1);
   }
-  console.log(quantity);
-  const addToButtons = (e) => {
-    e.stopPropagation();
-  };
+
   return (
     <div>
       <div className="number-buttons">
-        <button className="plus" onClick={plusCount}>
+        <button
+          className="plus"
+          onClick={(e) =>
+            isCart ? changeQuantity(e, 1, product.id) : plusCount(e)
+          }
+        >
           +
         </button>
         <h3>{isCart ? quantity[0].quantity : count}</h3>
-        <button className="minus" onClick={minusCount}>
+        <button
+          className="minus"
+          disabled={
+            isCart ? quantity[0].quantity == 1 : count == 1 ? true : false
+          }
+          onClick={(e) =>
+            isCart ? changeQuantity(e, -1, product.id) : minusCount(e)
+          }
+        >
           -
         </button>
       </div>
       <br />
-      <button
-        className="add-to-cart"
-        onClick={(e) => {
-          handleAddToCart(e, product, count);
-          setCount(1);
-        }}
-      >
-        Add to cart
-      </button>
+      {isCart ? (
+        <button onClick={(e) => removeItem(e, product.id)}>Remove</button>
+      ) : (
+        <button
+          className="add-to-cart"
+          onClick={(e) => {
+            handleAddToCart(e, product, count);
+            setCount(1);
+          }}
+        >
+          Add to cart
+        </button>
+      )}
     </div>
   );
 }
