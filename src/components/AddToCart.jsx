@@ -1,6 +1,3 @@
-// When you click add to cart, it needs to call add to cart from the context
-// this function will take in an ID and the count from this page. ID might need to be passed through props
-
 import { useState } from "react";
 import { useCart } from "./CartProvider";
 

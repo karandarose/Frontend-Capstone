@@ -1,6 +1,3 @@
-// wrap around app
-// hold cart state and add to cart functionality
-
 import { createContext, useContext, useState, useEffect } from "react";
 
 const CartContext = createContext();
@@ -81,20 +78,23 @@ function CartProvider({ children }) {
   }, [cartItems]);
 
   return (
-    <CartContext.Provider
-      value={{
-        cartItems,
-        setCartItems,
-        handleAddToCart,
-        updateCartItemQuantity,
-        inCart,
-        removeItem,
-        changeQuantity,
-        cartPrice,
-      }}
-    >
-      {children}
-    </CartContext.Provider>
+    <div>
+      <div className="sub-total"></div>
+      <CartContext.Provider
+        value={{
+          cartItems,
+          setCartItems,
+          handleAddToCart,
+          updateCartItemQuantity,
+          inCart,
+          removeItem,
+          changeQuantity,
+          cartPrice,
+        }}
+      >
+        {children}
+      </CartContext.Provider>
+    </div>
   );
 }
 

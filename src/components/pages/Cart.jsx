@@ -1,6 +1,3 @@
-// map through cart and display product card for each item in cart
-// add up values for items in cart at checkout
-
 import ProductCard from "../ProductCard";
 
 import { useCart } from "../CartProvider";
