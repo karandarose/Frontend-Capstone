@@ -6,7 +6,7 @@ import Footer from "../Footer";
 
 export default function Products() {
   const [products, setProducts] = useState([]);
-  const [setLoading] = useState(true);
+  const [loading, setLoading] = useState(true);
   const [filteredProducts, setFilteredProducts] = useState([]);
   const [currentFilter, setCurrentFilter] = useState("");
   const [currentSort, setCurrentSort] = useState("");
