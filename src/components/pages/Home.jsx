@@ -1,5 +1,4 @@
 import snow from "../../assets/snow.mp4";
-import Footer from "../Footer";
 
 export default function Home() {
   return (
@@ -11,11 +10,10 @@ export default function Home() {
         loop
         muted
         id="snow.mp4"
-        style={{ width: "250%", height: "100%" }}
+        style={{ width: "100%", height: "80%" }}
       >
         <source src={snow} type="video/mp4" />
       </video>
-      <Footer />
     </div>
   );
 }

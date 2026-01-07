@@ -1,5 +1,5 @@
 import { useState } from "react";
-import Footer from "../Footer";
+import { successToast } from "../../util/toastNotifications";
 
 function ContactForm() {
   const [formData, setFormData] = useState({
@@ -14,8 +14,7 @@ function ContactForm() {
 
   const handleSubmit = (e) => {
     e.preventDefault();
-    console.log("Form submitted:", formData);
-    alert(`Thank you for your message, ${formData.name}!`);
+    successToast("Thank you for your message!");
 
     setFormData({
       name: "",
@@ -63,7 +62,6 @@ function ContactForm() {
         </div>
         <button type="submit">Send Message</button>
       </form>
-      <Footer />
     </div>
   );
 }

@@ -18,7 +18,7 @@ export default function AddToCart({ product, isCart = "" }) {
   }
 
   return (
-    <div>
+    <div className="add-to-cart-container">
       <div className="number-buttons">
         <button
           className="plus"
@@ -50,7 +50,6 @@ export default function AddToCart({ product, isCart = "" }) {
           onClick={(e) => {
             handleAddToCart(e, product, count);
             setCount(1);
-            alert(`${product.title} added to cart!`);
           }}
         >
           Add to cart

@@ -7,6 +7,7 @@ import Contact from "./pages/Contact";
 import Product from "./pages/Product";
 import Products from "./pages/Products";
 import icons from "../assets/icons";
+import Footer from "./Footer";
 
 icons();
 
@@ -24,6 +25,7 @@ function App() {
           <Route path="/products" component={Products} />
           <Redirect from="/" to="/home" />
         </Switch>
+        <Footer />
       </BrowserRouter>
     </div>
   );

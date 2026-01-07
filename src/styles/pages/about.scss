@@ -1,12 +1,26 @@
 .about {
+  display: flex;
+  flex-direction: column;
+  justify-content: center;
   align-items: center;
-}
-.process {
-  border: 1px solid black;
-}
-.struggles {
-  border: 1px solid black;
-}
-.favorite {
-  border: 1px solid black;
+
+  .process {
+    border: 1px solid black;
+    margin-bottom: 10px;
+    padding: 0 10px;
+    width: 90%;
+  }
+
+  .struggles {
+    border: 1px solid black;
+    margin-bottom: 10px;
+    padding: 0 10px;
+    width: 90%;
+  }
+
+  .favorite {
+    border: 1px solid black;
+    padding: 0 10px;
+    width: 90%;
+  }
 }

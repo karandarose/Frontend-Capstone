@@ -1,0 +1,9 @@
+.loading-spinner {
+  width: 100%;
+  display: flex;
+  justify-content: center;
+  svg {
+    color: white;
+    font-size: 100px;
+  }
+}

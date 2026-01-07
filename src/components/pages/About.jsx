@@ -1,5 +1,3 @@
-import Footer from "../Footer";
-
 export default function About() {
   return (
     <div className="about">
@@ -11,23 +9,22 @@ export default function About() {
           be the easiest. I then moved to do the cart page then the remaining
           pages.
         </p>
-        <div className="struggles">
-          <h1>Struggles</h1>
-          <p>
-            I don't understand Javascript or React very well so this whole
-            capstone was difficult.
-          </p>
-          <div className="favorite">
-            <h1>Favorite language</h1>
-            <p>
-              Im not sure if I have a favorite language as of yet. I have
-              enjoyed everything I have, even with the struggles, in the two
-              classes Ive done.
-            </p>
-          </div>
-        </div>
       </div>
-      <Footer />
+      <div className="struggles">
+        <h1>Struggles</h1>
+        <p>
+          I don't understand Javascript or React very well so this whole
+          capstone was difficult.
+        </p>
+      </div>
+      <div className="favorite">
+        <h1>Favorite language</h1>
+        <p>
+          Im not sure if I have a favorite language as of yet. I have enjoyed
+          everything I have, even with the struggles, in the two classes Ive
+          done.
+        </p>
+      </div>
     </div>
   );
 }

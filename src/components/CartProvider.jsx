@@ -1,4 +1,5 @@
 import { createContext, useContext, useState, useEffect } from "react";
+import { errorToast, successToast } from "../util/toastNotifications.jsx";
 
 const CartContext = createContext();
 
@@ -23,6 +24,7 @@ function CartProvider({ children }) {
 
       return [...prevItems, { ...product, quantity: count }];
     });
+    successToast("Added item successfully!");
   };
 
   const updateCartItemQuantity = (id, newQuantity) => {
@@ -43,6 +45,7 @@ function CartProvider({ children }) {
   const removeItem = (event, id) => {
     event.stopPropagation();
     setCartItems((prev) => prev.filter((item) => item.id !== id));
+    errorToast("Item removed!");
   };
 
   const changeQuantity = (e, quantity, id) => {
@@ -71,7 +74,6 @@ function CartProvider({ children }) {
 
     return total;
   };
-  cartPrice();
 
   useEffect(() => {
     sessionStorage.setItem("cartItems", JSON.stringify(cartItems));

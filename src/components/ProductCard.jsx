@@ -15,6 +15,3 @@ export default function ProductCard({ product, isCart = "" }) {
   );
 }
 
-// if productcard is on the cart page, addtocart should display total quanity and either productcard and or addtocart should have delete button.
-// can use props to pass in variable that is true or false
-// {!isCart &&

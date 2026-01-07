@@ -1,18 +1,32 @@
-html,
-body {
-  background-color: rgb(48, 131, 239);
-  z-index: 0;
-}
-
-h1 {
-  align-items: center;
-  justify-content: center;
-}
-
 .video-container-products {
   position: fixed;
   z-index: 0;
   overflow: hidden;
-  margin-top: 20%;
+  margin: 0;
+  top: 0;
   width: 100%;
+}
+.title-and-buttons {
+  position: relative;
+  z-index: 10;
+
+  .filter-buttons {
+    position: relative;
+    z-index: 10;
+    display: flex;
+    width: 100%;
+    justify-content: center;
+    align-items: center;
+    gap: 10px;
+  }
+}
+.products-wrapper {
+  display: flex;
+  flex-wrap: wrap;
+  justify-content: center;
+  align-items: center;
+  width: 100%;
+  gap: 15px;
+  margin-top: 50px;
+  padding-bottom: 50px;
 }

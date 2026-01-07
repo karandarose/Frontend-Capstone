@@ -1,21 +1,23 @@
-.number-buttons {
-  display: flex;
-  align-items: center;
-  gap: 5px;
-}
+.add-to-cart-container {
+  .number-buttons {
+    display: flex;
+    align-items: center;
+    gap: 5px;
+  }
 
-.plus {
-  height: 40px;
-  align-items: center;
-  justify-content: center;
-}
+  .plus {
+    height: 40px;
+    align-items: center;
+    justify-content: center;
+  }
 
-.minus {
-  height: 40px;
-  align-items: center;
-  justify-self: center;
-}
+  .minus {
+    height: 40px;
+    align-items: center;
+    justify-self: center;
+  }
 
-.add-to-cart {
-  margin-top: 5px;
+  .add-to-cart {
+    margin-top: 5px;
+  }
 }

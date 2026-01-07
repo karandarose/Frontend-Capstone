@@ -5,6 +5,7 @@
 @use "./navbar.scss";
 @use "./product-card.scss";
 @use "./add-to-cart.scss";
+@use "./loading-spinner.scss";
 // pages
 @use "./pages/about.scss";
 @use "./pages/cart.scss";
@@ -12,3 +13,4 @@
 @use "./pages/home.scss";
 @use "./pages/product.scss";
 @use "./pages/products.scss";
+@use "react-toastify/dist/ReactToastify.css";
